@@ -18,8 +18,8 @@ const MainChat: React.FC<MainChatProps> = ({ contact }) => {
             <div
               key={message.id}
               className={`p-3 my-2 rounded-lg max-w-xs ${
-                message.isUser ? "bg-blue-100 self-end" : "bg-gray-100"
-              }`} // Apply different styles for user's messages
+                message.isUser ? "ml-auto bg-blue-100" : "bg-gray-100"
+              }`} // Right align for user messages
             >
               <div className="text-sm font-medium">{message.sender}</div>
               <div>{message.content}</div>

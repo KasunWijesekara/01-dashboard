@@ -17,14 +17,14 @@ const Sidebar: React.FC<{ onSelectUser: (contact: Contact) => void }> = ({
       lastMessageTime: "2023-11-30T00:05:08.594Z",
       messages: [
         {
-          id: 1,
+          id: "1",
           sender: "John Doe",
           content: "Hello, this is a dummy message.",
           timestamp: "2023-11-30T00:05:08.594Z",
           isUser: false,
         },
         {
-          id: 2,
+          id: "2",
           sender: "User",
           content: "Hi John, this is another dummy message.",
           timestamp: "2023-11-30T00:05:08.594Z",
@@ -40,14 +40,14 @@ const Sidebar: React.FC<{ onSelectUser: (contact: Contact) => void }> = ({
       lastMessageTime: "2023-11-30T00:05:08.594Z",
       messages: [
         {
-          id: 1,
+          id: "1",
           sender: "Kasun Doe",
           content: "Hello, this is a dummy message.",
           timestamp: "2023-11-30T00:05:08.594Z",
           isUser: false,
         },
         {
-          id: 2,
+          id: "2",
           sender: "User",
           content: "Hi Rachel, this is another dummy message.",
           timestamp: "2023-11-30T00:05:08.594Z",

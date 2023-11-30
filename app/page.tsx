@@ -19,7 +19,7 @@ const Page: React.FC = () => {
       {selectedContact ? (
         <MainChat contact={selectedContact} />
       ) : (
-        <div>Select a user to start a chat</div>
+        <div className="pl-4 pt-4">Select a user to start a chat</div>
       )}
     </div>
   );
