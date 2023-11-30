@@ -10,6 +10,8 @@ const Page: React.FC = () => {
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
 
   const handleSelectUser = (contact: Contact) => {
+    // Reset the state here before setting the new selected contact
+    setSelectedContact(null);
     setSelectedContact(contact);
   };
 
@@ -17,7 +19,7 @@ const Page: React.FC = () => {
     <div className="flex h-screen">
       <Sidebar onSelectUser={handleSelectUser} />
       {selectedContact ? (
-        <MainChat contact={selectedContact} />
+        <MainChat key={selectedContact.id} contact={selectedContact} />
       ) : (
         <div className="pl-4 pt-4">Select a user to start a chat</div>
       )}

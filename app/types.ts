@@ -1,5 +1,3 @@
-// types.ts
-
 export interface Message {
     id: string;
     sender: string;
@@ -9,7 +7,7 @@ export interface Message {
 }
 
 export interface Contact {
-    id: number; // Change this to number
+    id: number;
     name: string;
     avatar: string;
     status: string;
