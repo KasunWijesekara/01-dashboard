@@ -1,35 +1,15 @@
-"use client";
+import { Separator } from "@/components/ui/separator";
 
-// pages/index.tsx or your main chat component
-import React, { useState } from "react";
-import Sidebar from "@/components/sidebar";
-import MainChat from "@/components/mainchat";
-import { Contact, Message } from "@/app/types"; // Import or define these interfaces here
-import Welcome from "@/components/welcome";
-
-const Page: React.FC = () => {
-  const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
-
-  const handleSelectUser = (contact: Contact) => {
-    // Reset the state here before setting the new selected contact
-    setSelectedContact(null);
-    setSelectedContact(contact);
-  };
-
+export default function Page() {
   return (
-    <div className="flex h-screen">
-      <Sidebar onSelectUser={handleSelectUser} />
-      {selectedContact ? (
-        <MainChat key={selectedContact.id} contact={selectedContact} />
-      ) : (
-        <div className="pl-2 mt-20 ">
-          <div className="container">
-            <Welcome />
-          </div>
-        </div>
-      )}
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-lg font-medium">Profile</h3>
+        <p className="text-sm text-muted-foreground">
+          This is how others will see you on the site.
+        </p>
+      </div>
+      <Separator />
     </div>
   );
-};
-
-export default Page;
+}
