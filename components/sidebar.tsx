@@ -83,7 +83,7 @@ const Sidebar: React.FC<{ onSelectUser: (contact: Contact) => void }> = ({
             selectedUser === contact.id ? "bg-gray-200" : ""
           }`}
         >
-          <span className="inline-flex justify-center items-center rounded-full bg-blue-500 mr-3">
+          <span className="inline-flex justify-center items-center rounded-full bg-gray-400 mr-3">
             <Image
               src={contact.avatar}
               alt={contact.name}
