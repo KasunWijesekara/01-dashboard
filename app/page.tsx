@@ -22,7 +22,7 @@ const Page: React.FC = () => {
       {selectedContact ? (
         <MainChat key={selectedContact.id} contact={selectedContact} />
       ) : (
-        <div className="pl-2 mt-20">
+        <div className="pl-2 mt-20 ">
           <div className="container">
             <Welcome />
           </div>

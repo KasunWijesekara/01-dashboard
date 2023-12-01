@@ -70,7 +70,7 @@ const Sidebar: React.FC<{ onSelectUser: (contact: Contact) => void }> = ({
   }, []);
 
   return (
-    <div className="bg-gray-100 h-screen overflow-y-scroll p-4 pt-16 w-96">
+    <div className="flex flex-col h-screen bg-slate-900 overflow-y-scroll p-4 pt-16 w-96 relative">
       {/* ... */}
       {contacts.map((contact, index) => (
         <div
@@ -80,10 +80,10 @@ const Sidebar: React.FC<{ onSelectUser: (contact: Contact) => void }> = ({
             setSelectedUser(contact.id); // Set the selected user when a user is clicked
           }}
           className={`flex items-center p-3 rounded-lg cursor-pointer ${
-            selectedUser === contact.id ? "bg-gray-200" : ""
+            selectedUser === contact.id ? "bg-slate-800" : ""
           }`}
         >
-          <span className="inline-flex justify-center items-center rounded-full bg-gray-400 mr-3">
+          <span className="inline-flex justify-center items-center rounded-full bg-slate-500 mr-3">
             <Image
               src={contact.avatar}
               alt={contact.name}
@@ -102,6 +102,12 @@ const Sidebar: React.FC<{ onSelectUser: (contact: Contact) => void }> = ({
           <div className="text-xs text-gray-500">{contact.lastMessageTime}</div>
         </div>
       ))}
+      <div className="w-11/12 pt-4 pb-4 bg-transparent text-center absolute bottom-0">
+        <p className="text-xs font-normal text-gray-400">
+          All Rights Reserved. Powered by{" "}
+          <span className="font-semibold">Zero One</span>
+        </p>
+      </div>
     </div>
   );
 };

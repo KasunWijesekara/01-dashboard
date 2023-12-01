@@ -22,18 +22,29 @@ const MainChat: React.FC<MainChatProps> = ({ contact }) => {
           <h2 className="text-xl font-semibold pl-3">Conversation History</h2>
           <UserButton afterSignOutUrl="/" />
         </div> */}
-        <div className="flex-grow overflow-y-scroll p-4">
+        <div
+          className="flex-grow overflow-y-scroll p-4"
+          style={{ scrollBehavior: "smooth" }}
+        >
           {/* List of messages */}
           {contact.messages.map((message) => (
             <div
               key={message.id}
               className={`p-3 my-2 rounded-lg max-w-xs ${
-                message.isUser ? "ml-auto bg-sky-200" : "bg-gray-100"
+                message.isUser ? "ml-auto bg-gray-800" : "bg-slate-800"
               }`} // Right align for user messages
             >
-              <div className="text-xs font-bold">{message.sender} </div>
+              <div className="text-xs font-bold">
+                <p>
+                  {message.sender}
+                  <span className="font-normal text-gray-400">
+                    {" "}
+                    {contact.status}
+                  </span>
+                </p>
+              </div>
               <div className="text-sm font-light pt-1">{message.content}</div>
-              <div className="text-xs text-gray-600 font-thin pt-3">
+              <div className="text-xs text-gray-200 font-thin pt-3 text-right">
                 {new Date(message.timestamp).toLocaleString("en-US", {
                   year: "numeric",
                   month: "long",
@@ -46,8 +57,6 @@ const MainChat: React.FC<MainChatProps> = ({ contact }) => {
             </div>
           ))}
         </div>
-        {/* Message input */}
-        <div className="p-4 bg-white">{/* Input and send button */}</div>
       </div>
     </div>
   );
