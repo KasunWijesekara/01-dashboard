@@ -21,9 +21,11 @@ const MainChat: React.FC<MainChatProps> = ({ contact }) => {
                 message.isUser ? "ml-auto bg-blue-100" : "bg-gray-100"
               }`} // Right align for user messages
             >
-              <div className="text-sm font-medium">{message.sender}</div>
-              <div>{message.content}</div>
-              <div className="text-xs text-gray-600">{message.timestamp}</div>
+              <div className="text-sm font-normal">{message.sender}</div>
+              <div className="text-base">{message.content}</div>
+              <div className="text-xs text-gray-600 font-thin">
+                {message.timestamp}
+              </div>
             </div>
           ))}
         </div>
