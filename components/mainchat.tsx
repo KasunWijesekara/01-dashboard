@@ -10,7 +10,7 @@ const MainChat: React.FC<MainChatProps> = ({ contact }) => {
     <div className="flex-grow p-4 pb-0">
       <div className="flex flex-col h-screen">
         <div className="flex-none">
-          <h2 className="text-xl font-semibold">Chat with {contact.name}</h2>
+          <h2 className="text-xl font-semibold pl-3">Conversation History</h2>
         </div>
         <div className="flex-grow overflow-y-scroll p-4">
           {/* List of messages */}
@@ -21,10 +21,17 @@ const MainChat: React.FC<MainChatProps> = ({ contact }) => {
                 message.isUser ? "ml-auto bg-blue-100" : "bg-gray-100"
               }`} // Right align for user messages
             >
-              <div className="text-sm font-normal">{message.sender}</div>
-              <div className="text-base">{message.content}</div>
-              <div className="text-xs text-gray-600 font-thin">
-                {message.timestamp}
+              <div className="text-xs font-bold">{message.sender} </div>
+              <div className="text-sm font-light pt-1">{message.content}</div>
+              <div className="text-xs text-gray-600 font-thin pt-3">
+                {new Date(message.timestamp).toLocaleString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "2-digit",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: true,
+                })}
               </div>
             </div>
           ))}

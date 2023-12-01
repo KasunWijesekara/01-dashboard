@@ -10,6 +10,7 @@ const Sidebar: React.FC<{ onSelectUser: (contact: Contact) => void }> = ({
   onSelectUser,
 }) => {
   const [contacts, setContacts] = useState<Contact[]>([]);
+  const [selectedUser, setSelectedUser] = useState<number | null>(null); // Add a state variable for the selected user
 
   useEffect(() => {
     axios
@@ -17,28 +18,40 @@ const Sidebar: React.FC<{ onSelectUser: (contact: Contact) => void }> = ({
       .then((response) => {
         if (Array.isArray(response.data)) {
           const sessions = response.data.reduce((acc, item) => {
-            if (!acc[item.session_id]) {
-              acc[item.session_id] = {
-                id: item.session_id,
+            const id = item.session_id.split("-")[0];
+            if (!acc[id]) {
+              acc[id] = {
+                id: id,
                 name: "User",
-                status: item.session_id,
+                status: id,
                 avatar: "/images/avatar.svg",
-                lastMessageTime: item.timestamp,
+                lastMessageTime: new Date(item.timestamp).toLocaleTimeString(
+                  "en-US",
+                  {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "numeric",
+                    hour12: true,
+                    timeZone: "Asia/Kolkata",
+                  }
+                ),
                 messages: [],
               };
             }
 
-            acc[item.session_id].messages.push(
+            acc[id].messages.push(
               {
                 id: item.id.toString(),
-                sender: "Customer",
+                sender: "User",
                 content: item.user_message,
                 timestamp: item.timestamp,
                 isUser: false,
               },
               {
                 id: item.id.toString(),
-                sender: "Ai Assistant",
+                sender: "01 Assistant",
                 content: item.ai_response,
                 timestamp: item.timestamp,
                 isUser: true,
@@ -57,25 +70,33 @@ const Sidebar: React.FC<{ onSelectUser: (contact: Contact) => void }> = ({
   }, []);
 
   return (
-    <div className="bg-gray-100 h-screen overflow-y-scroll p-4 pt-12 w-96">
+    <div className="bg-gray-100 h-screen overflow-y-scroll p-4 pt-16 w-96">
       {/* ... */}
       {contacts.map((contact, index) => (
         <div
           key={index}
-          onClick={() => onSelectUser(contact)} // Add the click handler here
-          className="flex items-center p-3 hover:bg-gray-200 rounded-lg cursor-pointer"
+          onClick={() => {
+            onSelectUser(contact); // Keep your existing click handler
+            setSelectedUser(contact.id); // Set the selected user when a user is clicked
+          }}
+          className={`flex items-center p-3 rounded-lg cursor-pointer ${
+            selectedUser === contact.id ? "bg-gray-200" : ""
+          }`}
         >
           <span className="inline-flex justify-center items-center rounded-full bg-blue-500 mr-3">
             <Image
               src={contact.avatar}
               alt={contact.name}
-              width={100}
-              height={100}
+              width={50}
+              height={50}
               className="rounded-full border-2 border-white"
             />
           </span>
           <div className="flex-grow">
-            <div className="font-medium text-sm">{contact.name}</div>
+            <div className="font-medium text-sm">
+              {contact.name}
+              <span className="text-xs font-light"> [Website]</span>
+            </div>
             <div className="text-xs text-gray-600">{contact.status}</div>
           </div>
           <div className="text-xs text-gray-500">{contact.lastMessageTime}</div>
