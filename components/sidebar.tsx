@@ -18,7 +18,7 @@ const Sidebar: React.FC<{ onSelectUser: (contact: Contact) => void }> = ({
       .then((response) => {
         if (Array.isArray(response.data)) {
           const sessions = response.data.reduce((acc, item) => {
-            const id = item.session_id.split("-")[0];
+            const id = item.ip_address.split("-")[0];
             if (!acc[id]) {
               acc[id] = {
                 id: id,
