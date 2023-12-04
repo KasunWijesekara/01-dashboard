@@ -70,7 +70,8 @@ const Sidebar: React.FC<{ onSelectUser: (contact: Contact) => void }> = ({
   }, []);
 
   return (
-    <div className="bg-gray-100 h-screen overflow-y-scroll p-4 pt-16 w-96">
+    // <div className="bg-gray-900 h-screen overflow-y-scroll p-4 w-3/6">
+    <div className="bg-gray-900 h-screen overflow-y-scroll w-3/6 p-4 pb-0">
       {/* ... */}
       {contacts.map((contact, index) => (
         <div
@@ -80,7 +81,7 @@ const Sidebar: React.FC<{ onSelectUser: (contact: Contact) => void }> = ({
             setSelectedUser(contact.id); // Set the selected user when a user is clicked
           }}
           className={`flex items-center p-3 rounded-lg cursor-pointer ${
-            selectedUser === contact.id ? "bg-gray-200" : ""
+            selectedUser === contact.id ? "bg-gray-800" : ""
           }`}
         >
           <span className="inline-flex justify-center items-center rounded-full bg-gray-400 mr-3">
@@ -92,7 +93,7 @@ const Sidebar: React.FC<{ onSelectUser: (contact: Contact) => void }> = ({
               className="rounded-full border-2 border-white"
             />
           </span>
-          <div className="flex-grow">
+          <div className="flex-grow w-3/6">
             <div className="font-medium text-sm">
               {contact.name}
               <span className="text-xs font-light"> [Website]</span>
