@@ -71,7 +71,7 @@ const Sidebar: React.FC<{ onSelectUser: (contact: Contact) => void }> = ({
 
   return (
     // <div className="bg-gray-900 h-screen overflow-y-scroll p-4 w-3/6">
-    <div className="bg-gray-900 h-screen overflow-y-scroll w-3/6 p-4 pb-0">
+    <div className="bg-transparent-900 border rounded-md h-screen overflow-y-scroll w-3/6 p-4 pb-0">
       {/* ... */}
       {contacts.map((contact, index) => (
         <div
