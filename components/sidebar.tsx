@@ -70,15 +70,14 @@ const Sidebar: React.FC<{ onSelectUser: (contact: Contact) => void }> = ({
   }, []);
 
   return (
-    // <div className="bg-gray-900 h-screen overflow-y-scroll p-4 w-3/6">
-    <div className="bg-transparent-900 border rounded-md h-screen overflow-y-scroll w-3/6 p-4 pb-0">
+    <div className="bg-transparent-900 border rounded-md h-screen overflow-y-scroll w-full sm:w-3/6 p-4 pb-0">
       {/* ... */}
       {contacts.map((contact, index) => (
         <div
           key={index}
           onClick={() => {
-            onSelectUser(contact); // Keep your existing click handler
-            setSelectedUser(contact.id); // Set the selected user when a user is clicked
+            onSelectUser(contact);
+            setSelectedUser(contact.id);
           }}
           className={`flex items-center p-3 rounded-lg cursor-pointer ${
             selectedUser === contact.id ? "bg-gray-800" : ""
@@ -93,14 +92,21 @@ const Sidebar: React.FC<{ onSelectUser: (contact: Contact) => void }> = ({
               className="rounded-full border-2 border-white"
             />
           </span>
-          <div className="flex-grow w-3/6">
+          <div className="flex-grow w-full sm:w-3/6">
             <div className="font-medium text-sm">
               {contact.name}
-              <span className="text-xs font-light"> [Website]</span>
+              <span className="hidden md:inline text-xs font-light">
+                {" "}
+                [Website]
+              </span>
             </div>
-            <div className="text-xs text-gray-600">{contact.status}</div>
+            <div className="hidden md:block text-xs text-gray-600">
+              {contact.status}
+            </div>
           </div>
-          <div className="text-xs text-gray-500">{contact.lastMessageTime}</div>
+          <div className="hidden md:block text-xs text-gray-500">
+            {contact.lastMessageTime}
+          </div>
         </div>
       ))}
     </div>

@@ -7,10 +7,10 @@ interface MainChatProps {
 
 const MainChat: React.FC<MainChatProps> = ({ contact }) => {
   return (
-    <div className="flex p-4 pb-0 w-3/4">
-      <div className="flex flex-col h-screen w-5/6">
+    <div className="flex flex-grow p-4 pb-0">
+      <div className="flex flex-col h-screen w-full sm:w-5/6">
         <div className="flex">
-          <div className="flex-none w-3/4 h-14">
+          <div className="flex-none w-full sm:w-3/4 h-14">
             <h2 className="text-xl font-semibold pl-3">Conversation History</h2>
           </div>
         </div>
@@ -18,12 +18,12 @@ const MainChat: React.FC<MainChatProps> = ({ contact }) => {
           <h2 className="text-xl font-semibold pl-3">Conversation History</h2>
           <UserButton afterSignOutUrl="/" />
         </div> */}
-        <div className="flex-grow overflow-y-scroll p-4">
+        <div className="flex flex-col h-screen overflow-y-auto w-full">
           {/* List of messages */}
           {contact.messages.map((message) => (
             <div
               key={message.id}
-              className={`p-3 my-2 rounded-lg max-w-xs ${
+              className={`p-3 my-2 rounded-lg max-w-full sm:max-w-xs ${
                 message.isUser ? "ml-auto bg-sky-900" : "bg-gray-900"
               }`} // Right align for user messages
             >
